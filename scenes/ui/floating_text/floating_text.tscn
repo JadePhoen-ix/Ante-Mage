@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvrxdegdf7e2n"]
+
+[ext_resource type="Script" path="res://scenes/ui/floating_text/floating_text.gd" id="1_gp6o5"]
+
+[node name="FloatingText" type="Node2D"]
+script = ExtResource("1_gp6o5")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 32)
+offset_left = -50.0
+offset_top = -14.0
+offset_right = 50.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0.909804, 0.270588, 0.215686, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 16
+text = "700"
+horizontal_alignment = 1
+vertical_alignment = 1

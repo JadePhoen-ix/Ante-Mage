@@ -1,0 +1,225 @@
+[gd_scene load_steps=34 format=3 uid="uid://d36byfh2btykp"]
+
+[ext_resource type="Script" path="res://scenes/game_object/enemies/enemy_skeleton/enemy_skeleton.gd" id="1_ex7va"]
+[ext_resource type="PackedScene" uid="uid://dibnj62lf4fqp" path="res://scenes/component/health/health_component.tscn" id="2_c6tns"]
+[ext_resource type="PackedScene" uid="uid://5rh7iu22ipwl" path="res://scenes/component/vial_drop/vial_drop_component.tscn" id="3_hoyx4"]
+[ext_resource type="PackedScene" uid="uid://brcj27mh1o8ey" path="res://scenes/component/velocity/velocity_component.tscn" id="4_27x48"]
+[ext_resource type="PackedScene" uid="uid://bnuwnuw3mpwf7" path="res://scenes/component/death/explosive_death_component.tscn" id="5_x8pa6"]
+[ext_resource type="PackedScene" uid="uid://bogprwkvw2lg2" path="res://scenes/component/random_audio_2d/random_audio_component_2d.tscn" id="6_2is23"]
+[ext_resource type="Texture2D" uid="uid://ds672ph3bbn33" path="res://scenes/game_object/enemies/enemy_skeleton/skele_parts_spritesheet.png" id="6_q26db"]
+[ext_resource type="AudioStream" uid="uid://d1a1fy5b86gdx" path="res://assets/audio/impact/footstep_carpet_000.ogg" id="7_ax0ek"]
+[ext_resource type="AudioStream" uid="uid://epnnf4nclu6p" path="res://assets/audio/impact/footstep_carpet_001.ogg" id="8_1222c"]
+[ext_resource type="AudioStream" uid="uid://b3rj1d804f0fw" path="res://assets/audio/impact/footstep_carpet_002.ogg" id="9_t3bqc"]
+[ext_resource type="AudioStream" uid="uid://bd24ufnwmrbpe" path="res://assets/audio/impact/footstep_carpet_003.ogg" id="10_124ej"]
+[ext_resource type="AudioStream" uid="uid://ceulh1vjbjg6p" path="res://assets/audio/impact/footstep_carpet_004.ogg" id="11_dv6eb"]
+[ext_resource type="PackedScene" uid="uid://bw0h3mk6so7q5" path="res://scenes/component/hurtbox/hurtbox_component.tscn" id="12_3xrcs"]
+[ext_resource type="PackedScene" uid="uid://cdjt2bwi3w0j3" path="res://scenes/component/animated_entity/animated_entity_component.tscn" id="13_w6qv2"]
+[ext_resource type="Shader" path="res://resources/shaders/hit_flash_component.gdshader" id="14_ax0pw"]
+[ext_resource type="Texture2D" uid="uid://dw0x84piryp2a" path="res://scenes/game_object/enemies/enemy_skeleton/skeleton_spritesheet.png" id="16_8gq5i"]
+
+[sub_resource type="Animation" id="Animation_ynngn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/AnimatedEntityComponent:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/AnimatedEntityComponent:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_xibpw"]
+resource_name = "walk"
+length = 0.45
+loop_mode = 1
+step = 0.075
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/AnimatedEntityComponent:animation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/AnimatedEntityComponent:frame")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eo31m"]
+_data = {
+"RESET": SubResource("Animation_ynngn"),
+"walk": SubResource("Animation_xibpw")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5b5us"]
+size = Vector2(28, 35)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pealj"]
+resource_local_to_scene = true
+shader = ExtResource("14_ax0pw")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cnrv"]
+atlas = ExtResource("16_8gq5i")
+region = Rect2(0, 0, 34, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7pln"]
+atlas = ExtResource("16_8gq5i")
+region = Rect2(34, 0, 34, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6glx2"]
+atlas = ExtResource("16_8gq5i")
+region = Rect2(68, 0, 34, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swr85"]
+atlas = ExtResource("16_8gq5i")
+region = Rect2(102, 0, 34, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j5el"]
+atlas = ExtResource("16_8gq5i")
+region = Rect2(0, 36, 34, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwlwn"]
+atlas = ExtResource("16_8gq5i")
+region = Rect2(34, 36, 34, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgjfv"]
+atlas = ExtResource("16_8gq5i")
+region = Rect2(68, 36, 34, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxets"]
+atlas = ExtResource("16_8gq5i")
+region = Rect2(102, 36, 34, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_864jd"]
+atlas = ExtResource("16_8gq5i")
+region = Rect2(136, 36, 34, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gijx1"]
+atlas = ExtResource("16_8gq5i")
+region = Rect2(170, 36, 34, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lfyp5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cnrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7pln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6glx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swr85")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j5el")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwlwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgjfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxets")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_864jd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gijx1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ggpam"]
+radius = 8.0
+
+[node name="SkeletonEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
+script = ExtResource("1_ex7va")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eo31m")
+}
+autoplay = "walk"
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_c6tns")]
+
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_hoyx4")]
+drop_percent = 0.4
+health_component = NodePath("../HealthComponent")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("4_27x48")]
+
+[node name="ExplosiveDeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_x8pa6")]
+health_component = NodePath("../HealthComponent")
+texture = ExtResource("6_q26db")
+texture_frames = Vector2(2, 3)
+
+[node name="RandomAudioComponent2D" parent="ExplosiveDeathComponent" instance=ExtResource("6_2is23")]
+unique_name_in_owner = true
+streams = Array[AudioStream]([ExtResource("7_ax0ek"), ExtResource("8_1222c"), ExtResource("9_t3bqc"), ExtResource("10_124ej"), ExtResource("11_dv6eb")])
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("12_3xrcs")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtboxCollisionShape" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(-2, -13.5)
+shape = SubResource("RectangleShape2D_5b5us")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="AnimatedEntityComponent" parent="Visuals" node_paths=PackedStringArray("health_component") instance=ExtResource("13_w6qv2")]
+material = SubResource("ShaderMaterial_pealj")
+sprite_frames = SubResource("SpriteFrames_lfyp5")
+autoplay = "default"
+offset = Vector2(-2, -16)
+health_component = NodePath("../../HealthComponent")
+shadow_size = 20
+
+[node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_ggpam")

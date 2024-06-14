@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://jhs0qa0aey7i"]
+
+[ext_resource type="Shader" path="res://resources/shaders/impact_frame.gdshader" id="1_ah2qi"]
+
+[sub_resource type="Gradient" id="Gradient_37a0e"]
+offsets = PackedFloat32Array(0.919643, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+metadata/_snap_count = 21
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nv0jq"]
+gradient = SubResource("Gradient_37a0e")
+width = 273
+height = 156
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+
+[resource]
+shader = ExtResource("1_ah2qi")
+shader_parameter/step_value = 0.33
+shader_parameter/alpha_texture = SubResource("GradientTexture2D_nv0jq")

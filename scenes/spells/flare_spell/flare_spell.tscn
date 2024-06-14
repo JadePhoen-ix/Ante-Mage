@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://rwpuc2d60bx0"]
+
+[ext_resource type="Script" path="res://scenes/spells/flare_spell/flare_spell.gd" id="1_oaaiv"]
+[ext_resource type="PackedScene" uid="uid://h8r7250rt7e7" path="res://scenes/spells/flare_spell/flare_spell_projectile.tscn" id="1_v1b4r"]
+
+[node name="FlareSpell" type="Node2D"]
+script = ExtResource("1_oaaiv")
+
+[node name="FlareSpellProjectile" parent="." instance=ExtResource("1_v1b4r")]
+position = Vector2(-35, 0)
+
+[node name="FlareSpellProjectile2" parent="." instance=ExtResource("1_v1b4r")]
+position = Vector2(35, 0)
+
+[node name="FlareSpellProjectile3" parent="." instance=ExtResource("1_v1b4r")]
+position = Vector2(0, -52.5)

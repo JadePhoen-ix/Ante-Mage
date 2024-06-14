@@ -1,0 +1,140 @@
+[gd_scene load_steps=9 format=3 uid="uid://ci0586xetwb8n"]
+
+[ext_resource type="PackedScene" uid="uid://bi84bmkmfwpmo" path="res://scenes/ui/spell_card/spell_card.tscn" id="1_326st"]
+[ext_resource type="Script" path="res://scenes/ui/spell_card_hand/spell_card_hand.gd" id="1_yoneh"]
+
+[sub_resource type="Curve" id="Curve_psbt5"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_iaxlk"]
+min_value = -1.0
+max_value = 1.5
+_data = [Vector2(0, -1), 0.0, 10.0, 0, 0, Vector2(0.5, 1.5), 0.0, 0.0, 0, 0, Vector2(1, -1), -10.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_g7dxx"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, -4.0, 0, 0, Vector2(0.5, 1.49012e-08), 0.0, 0.0, 0, 0, Vector2(1, -1), -4.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[sub_resource type="Animation" id="Animation_miptm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6o6m3"]
+resource_name = "description_default"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mb7xx"]
+_data = {
+"RESET": SubResource("Animation_miptm"),
+"description_default": SubResource("Animation_6o6m3")
+}
+
+[node name="SpellCardHand" type="CanvasLayer"]
+script = ExtResource("1_yoneh")
+draw_time = 4.0
+spread_curve = SubResource("Curve_psbt5")
+height_curve = SubResource("Curve_iaxlk")
+rotation_curve = SubResource("Curve_g7dxx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mb7xx")
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 130)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -102.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 520
+theme_override_constants/margin_bottom = 30
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 9
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(692, 72)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_constants/line_spacing = 4
+theme_override_font_sizes/font_size = 32
+text = "Throw a spinning axe every few seconds.
+This is testing to see a second line of text."
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CardHolder" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1020, 650)
+
+[node name="SpellCard" parent="CardHolder" instance=ExtResource("1_326st")]
+position = Vector2(-180, 14)
+rotation = -0.252
+
+[node name="SpellCard2" parent="CardHolder" instance=ExtResource("1_326st")]
+position = Vector2(-120, -5.44446)
+rotation = -0.112
+
+[node name="SpellCard3" parent="CardHolder" instance=ExtResource("1_326st")]
+position = Vector2(-60, -17.1111)
+rotation = -0.028
+
+[node name="SpellCard4" parent="CardHolder" instance=ExtResource("1_326st")]
+position = Vector2(0, -21)
+
+[node name="SpellCard5" parent="CardHolder" instance=ExtResource("1_326st")]
+position = Vector2(60, -17.1111)
+rotation = 0.028
+
+[node name="SpellCard6" parent="CardHolder" instance=ExtResource("1_326st")]
+position = Vector2(120, -5.44446)
+rotation = 0.112
+
+[node name="SpellCard7" parent="CardHolder" instance=ExtResource("1_326st")]
+position = Vector2(180, 14)
+rotation = 0.252

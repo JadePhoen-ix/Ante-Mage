@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxd5vbavbiva6"]
+
+[ext_resource type="Script" path="res://scenes/manager/spell_deck_manager/spell_deck_manager.gd" id="1_vqiob"]
+
+[node name="SpellDeckManager" type="Node"]
+script = ExtResource("1_vqiob")

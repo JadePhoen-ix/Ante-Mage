@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://wpflclyaha85"]
+
+[ext_resource type="Script" path="res://resources/upgrades/upgrade.gd" id="1_0qwry"]
+
+[resource]
+script = ExtResource("1_0qwry")
+id = "aero_cards"
+max_level = 0
+name = "Aero Cards"
+description = "Add 1 Typhoon and 3 Whirlwinds to your deck."

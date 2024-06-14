@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://h8247bhtfv1r"]
+
+[ext_resource type="Script" path="res://scenes/autoload/spell_targeting/spell_targeting.gd" id="1_iiiiq"]
+
+[node name="SpellTargeting" type="Node"]
+script = ExtResource("1_iiiiq")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=4 format=3 uid="uid://cy64pum561qqh"]
+
+[ext_resource type="Script" path="res://resources/spells/spell.gd" id="1_axgya"]
+[ext_resource type="Texture2D" uid="uid://bg28i4fir8wyb" path="res://scenes/spells/flare_spell/flare_static.png" id="2_ncw3i"]
+[ext_resource type="PackedScene" uid="uid://rwpuc2d60bx0" path="res://scenes/spells/flare_spell/flare_spell.tscn" id="2_osx0o"]
+
+[resource]
+script = ExtResource("1_axgya")
+id = "flare_spell"
+name = "Flare"
+description = "Shoot out 3 bolts of fire at random enemies."
+spell_scene = ExtResource("2_osx0o")
+spell_image = ExtResource("2_ncw3i")

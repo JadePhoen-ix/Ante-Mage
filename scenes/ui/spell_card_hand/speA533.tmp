@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci0586xetwb8n"]
+
+[ext_resource type="Script" path="res://scenes/ui/spell_card_hand/spell_card_hand.gd" id="1_yoneh"]
+
+[sub_resource type="Curve" id="Curve_psbt5"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_iaxlk"]
+min_value = -1.0
+max_value = 1.5
+_data = [Vector2(0, -1), 0.0, 10.0, 0, 0, Vector2(0.5, 1.5), 0.0, 0.0, 0, 0, Vector2(1, -1), -10.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_g7dxx"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, -4.0, 0, 0, Vector2(0.5, 1.49012e-08), 0.0, 0.0, 0, 0, Vector2(1, -1), -4.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_yoneh")
+spread_curve = SubResource("Curve_psbt5")
+height_curve = SubResource("Curve_iaxlk")
+rotation_curve = SubResource("Curve_g7dxx")
+
+[node name="CardHolder" type="Node2D" parent="."]
+position = Vector2(316, 330)

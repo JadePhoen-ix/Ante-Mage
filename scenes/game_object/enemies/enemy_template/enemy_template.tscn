@@ -1,0 +1,63 @@
+[gd_scene load_steps=16 format=3 uid="uid://nxqfys61ojcg"]
+
+[ext_resource type="Script" path="res://scenes/game_object/enemies/enemy.gd" id="1_n0svr"]
+[ext_resource type="PackedScene" uid="uid://dibnj62lf4fqp" path="res://scenes/component/health/health_component.tscn" id="2_tbcml"]
+[ext_resource type="PackedScene" uid="uid://5rh7iu22ipwl" path="res://scenes/component/vial_drop/vial_drop_component.tscn" id="3_d2v8x"]
+[ext_resource type="PackedScene" uid="uid://brcj27mh1o8ey" path="res://scenes/component/velocity/velocity_component.tscn" id="4_hcmvn"]
+[ext_resource type="PackedScene" uid="uid://drhk0psdbhoeq" path="res://scenes/component/death/death_component.tscn" id="5_4drwc"]
+[ext_resource type="PackedScene" uid="uid://bogprwkvw2lg2" path="res://scenes/component/random_audio_2d/random_audio_component_2d.tscn" id="6_rtr8b"]
+[ext_resource type="AudioStream" uid="uid://d1a1fy5b86gdx" path="res://assets/audio/impact/footstep_carpet_000.ogg" id="7_28vvl"]
+[ext_resource type="AudioStream" uid="uid://epnnf4nclu6p" path="res://assets/audio/impact/footstep_carpet_001.ogg" id="8_oeru1"]
+[ext_resource type="AudioStream" uid="uid://b3rj1d804f0fw" path="res://assets/audio/impact/footstep_carpet_002.ogg" id="9_tioxe"]
+[ext_resource type="AudioStream" uid="uid://bd24ufnwmrbpe" path="res://assets/audio/impact/footstep_carpet_003.ogg" id="10_rcutr"]
+[ext_resource type="AudioStream" uid="uid://ceulh1vjbjg6p" path="res://assets/audio/impact/footstep_carpet_004.ogg" id="11_dada7"]
+[ext_resource type="PackedScene" uid="uid://bw0h3mk6so7q5" path="res://scenes/component/hurtbox/hurtbox_component.tscn" id="12_2v1nw"]
+[ext_resource type="PackedScene" uid="uid://cdjt2bwi3w0j3" path="res://scenes/component/animated_entity/animated_entity_component.tscn" id="13_odicl"]
+[ext_resource type="Shader" path="res://resources/shaders/hit_flash_component.gdshader" id="14_sen8h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pealj"]
+resource_local_to_scene = true
+shader = ExtResource("14_sen8h")
+shader_parameter/lerp_percent = 0.0
+
+[node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
+script = ExtResource("1_n0svr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_tbcml")]
+
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_d2v8x")]
+drop_percent = 0.4
+health_component = NodePath("../HealthComponent")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("4_hcmvn")]
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_4drwc")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/DeathSprite")
+
+[node name="RandomAudioComponent2D" parent="DeathComponent" instance=ExtResource("6_rtr8b")]
+unique_name_in_owner = true
+streams = Array[AudioStream]([ExtResource("7_28vvl"), ExtResource("8_oeru1"), ExtResource("9_tioxe"), ExtResource("10_rcutr"), ExtResource("11_dada7")])
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("12_2v1nw")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -5)
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="DeathSprite" type="Sprite2D" parent="Visuals"]
+visible = false
+
+[node name="AnimatedEntityComponent" parent="Visuals" node_paths=PackedStringArray("health_component") instance=ExtResource("13_odicl")]
+material = SubResource("ShaderMaterial_pealj")
+health_component = NodePath("../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)

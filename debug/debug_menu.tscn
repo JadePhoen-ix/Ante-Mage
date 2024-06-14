@@ -1,0 +1,112 @@
+[gd_scene load_steps=6 format=3 uid="uid://din2bcym11x82"]
+
+[ext_resource type="Script" path="res://debug/debug_menu.gd" id="1_quah8"]
+[ext_resource type="PackedScene" uid="uid://dwnwju7rvg8qi" path="res://scenes/ui/audio_button/audio_button.tscn" id="2_h02es"]
+
+[sub_resource type="Animation" id="Animation_53id7"]
+length = 0.001
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1104, -251)]
+}
+
+[sub_resource type="Animation" id="Animation_6x0p7"]
+resource_name = "default"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(1104, -251), Vector2(1104, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pu8sx"]
+_data = {
+"RESET": SubResource("Animation_53id7"),
+"default": SubResource("Animation_6x0p7")
+}
+
+[node name="DebugMenu" type="CanvasLayer"]
+script = ExtResource("1_quah8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pu8sx")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -176.0
+offset_top = -251.0
+offset_bottom = 36.0
+grow_horizontal = 0
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="LevelUpButton" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_h02es")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Level Up"
+
+[node name="AddOneExpButton" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_h02es")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Add 1 Exp"
+
+[node name="Add100ExpButton" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_h02es")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Add 100 Exp"
+
+[node name="KillEnemiesButton" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_h02es")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Kill All Enemies"
+
+[node name="KillPlayerButton" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_h02es")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Kill Player"
+
+[node name="WinGameButton" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_h02es")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Win Game"
+
+[node name="TogglePanelButton" parent="VBoxContainer" instance=ExtResource("2_h02es")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 22)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Debug"

@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdjt2bwi3w0j3"]
+
+[ext_resource type="Material" uid="uid://c7m3h6tudaux1" path="res://resources/materials/hit_flash_component_material.tres" id="1_7oit8"]
+[ext_resource type="Script" path="res://scenes/component/animated_entity/animated_entity_component.gd" id="1_80622"]
+[ext_resource type="PackedScene" uid="uid://cu5ey2ts4wgye" path="res://scenes/component/hit_flash/hit_flash_component.tscn" id="2_7fx6g"]
+
+[sub_resource type="Gradient" id="Gradient_jxbhh"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.4, 0.7, 1)
+colors = PackedColorArray(0.0784314, 0.0784314, 0.0784314, 0.784314, 0.118581, 0.118581, 0.118581, 0.498039, 0, 0, 0, 0, 0, 0, 0, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sr7a6"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_jxbhh")
+width = 33
+height = 30
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[node name="AnimatedEntityComponent" type="AnimatedSprite2D"]
+material = ExtResource("1_7oit8")
+script = ExtResource("1_80622")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_7fx6g")]
+sprite = NodePath("..")
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(1, 0.3)
+texture = SubResource("GradientTexture2D_sr7a6")

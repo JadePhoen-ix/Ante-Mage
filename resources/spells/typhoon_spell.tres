@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=4 format=3 uid="uid://bba36iqvloxd"]
+
+[ext_resource type="Script" path="res://resources/spells/spell.gd" id="1_6bqo0"]
+[ext_resource type="Texture2D" uid="uid://glkpnkmhagk0" path="res://scenes/spells/typhoon_spell/typhoon_static_image.png" id="2_gg3er"]
+[ext_resource type="PackedScene" uid="uid://c7vj01iflav6i" path="res://scenes/spells/typhoon_spell/typhoon_spell.tscn" id="2_o2iyh"]
+
+[resource]
+script = ExtResource("1_6bqo0")
+id = "typhoon_spell"
+name = "Typhoon"
+description = "Summon a slow moving, low damage typhoon that sucks enemies into it's center."
+spell_scene = ExtResource("2_o2iyh")
+spell_image = ExtResource("2_gg3er")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4mv5ubqhhbpd"]
+
+[ext_resource type="Material" uid="uid://cyvdjxdh1vnjf" path="res://resources/materials/shockwave.tres" id="1_shsge"]
+
+[sub_resource type="Gradient" id="Gradient_tcf2u"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.914063, 1)
+colors = PackedColorArray(0.607843, 0.607843, 0.607843, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_63eoh"]
+gradient = SubResource("Gradient_tcf2u")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.919, 0.5)
+repeat = 2
+metadata/_snap_count = 13
+
+[node name="ShockwaveComponent" type="Sprite2D"]
+material = ExtResource("1_shsge")
+texture = SubResource("GradientTexture2D_63eoh")

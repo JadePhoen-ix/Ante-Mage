@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://d3y4b3u4qtudm"]
+
+[ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_ew8ql"]
+
+[resource]
+script = ExtResource("1_ew8ql")
+id = "experience_gain"
+max_level = 1
+cost = 100
+name = "Experience+"
+description = "Increases experience vials dropped by 10%."

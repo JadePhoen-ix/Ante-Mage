@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://hb4inp8osvt"]
+
+[ext_resource type="Script" path="res://scenes/autoload/deck_data/deck_data.gd" id="1_svq2u"]
+[ext_resource type="PackedScene" uid="uid://yorekalbaxof" path="res://scenes/deck/deck.tscn" id="2_i8c2q"]
+[ext_resource type="Resource" uid="uid://bba36iqvloxd" path="res://resources/spells/typhoon_spell.tres" id="3_1i50p"]
+[ext_resource type="Resource" uid="uid://ds2dhyh8uqkff" path="res://resources/spells/stalagmite_spell.tres" id="3_7qyur"]
+[ext_resource type="Resource" uid="uid://rjjvpofm4f30" path="res://resources/spells/whirlwind_spell.tres" id="3_73gx6"]
+[ext_resource type="Resource" uid="uid://dj7hqvvwr8t5o" path="res://resources/spells/fireball_spell.tres" id="3_cabej"]
+[ext_resource type="Resource" uid="uid://cy64pum561qqh" path="res://resources/spells/flare_spell.tres" id="3_evc5q"]
+
+[node name="DeckData" type="Node"]
+script = ExtResource("1_svq2u")
+
+[node name="DemoDeck" parent="." instance=ExtResource("2_i8c2q")]
+spell = ExtResource("3_1i50p")
+amount = 3
+deck_contents = Array[Dictionary]([{
+"item": ExtResource("3_evc5q"),
+"weight": 3
+}, {
+"item": ExtResource("3_cabej"),
+"weight": 3
+}, {
+"item": ExtResource("3_73gx6"),
+"weight": 3
+}, {
+"item": ExtResource("3_7qyur"),
+"weight": 3
+}, {
+"item": ExtResource("3_1i50p"),
+"weight": 3
+}])

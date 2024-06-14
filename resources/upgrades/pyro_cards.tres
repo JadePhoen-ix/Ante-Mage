@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://cn2pqnax8bogp"]
+
+[ext_resource type="Script" path="res://resources/upgrades/upgrade.gd" id="1_jnsjo"]
+
+[resource]
+script = ExtResource("1_jnsjo")
+id = "pyro_cards"
+max_level = 0
+name = "Pyro Cards"
+description = "Add 1 Fireball and 3 Flares to your deck."

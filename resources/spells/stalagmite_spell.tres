@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=4 format=3 uid="uid://ds2dhyh8uqkff"]
+
+[ext_resource type="Script" path="res://resources/spells/spell.gd" id="1_4jlor"]
+[ext_resource type="PackedScene" uid="uid://die3v58vux87w" path="res://scenes/spells/stalagmite_spell/stalagmite_spell.tscn" id="2_cwk2m"]
+[ext_resource type="Texture2D" uid="uid://c137ecpdod2fh" path="res://scenes/spells/stalagmite_spell/stalagmite_static.png" id="2_ocm75"]
+
+[resource]
+script = ExtResource("1_4jlor")
+id = "stalagmite_spell"
+name = "Stalagmite"
+description = "Conjure spikes of rock, impaling up to 4 enemies."
+spell_scene = ExtResource("2_cwk2m")
+spell_image = ExtResource("2_ocm75")

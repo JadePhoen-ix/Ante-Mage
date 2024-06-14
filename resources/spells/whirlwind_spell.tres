@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=4 format=3 uid="uid://rjjvpofm4f30"]
+
+[ext_resource type="Script" path="res://resources/spells/spell.gd" id="1_k2lns"]
+[ext_resource type="PackedScene" uid="uid://cd6uovrhpiuxx" path="res://scenes/spells/whirlwind_spell/whirlwind_spell.tscn" id="2_aglst"]
+[ext_resource type="Texture2D" uid="uid://dbmo1gldhkjpc" path="res://scenes/spells/whirlwind_spell/whirlwind_static_image.png" id="2_flpge"]
+
+[resource]
+script = ExtResource("1_k2lns")
+id = "whirlwind_spell"
+name = "Whirlwind"
+description = "Send out a burst of slicing winds to damage nearby enemies."
+spell_scene = ExtResource("2_aglst")
+spell_image = ExtResource("2_flpge")

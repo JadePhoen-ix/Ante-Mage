@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=4 format=3 uid="uid://dj7hqvvwr8t5o"]
+
+[ext_resource type="Script" path="res://resources/spells/spell.gd" id="1_ut8tm"]
+[ext_resource type="Texture2D" uid="uid://ckbxssd4hloss" path="res://scenes/spells/fireball_spell/fireball_static.png" id="2_82jdg"]
+[ext_resource type="PackedScene" uid="uid://448mmlw2w1jm" path="res://scenes/spells/fireball_spell/fireball_spell.tscn" id="2_vcj7y"]
+
+[resource]
+script = ExtResource("1_ut8tm")
+id = "fireball_spell"
+name = "Fireball"
+description = "Conjure a damaging explosion on a group of enemies."
+spell_scene = ExtResource("2_vcj7y")
+spell_image = ExtResource("2_82jdg")
