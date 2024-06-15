@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://b3rj1d804f0fw" path="res://assets/audio/impact/footstep_carpet_002.ogg" id="10_8rxxy"]
 [ext_resource type="AudioStream" uid="uid://bd24ufnwmrbpe" path="res://assets/audio/impact/footstep_carpet_003.ogg" id="11_bhxn8"]
 [ext_resource type="AudioStream" uid="uid://ceulh1vjbjg6p" path="res://assets/audio/impact/footstep_carpet_004.ogg" id="12_xyc06"]
-[ext_resource type="PackedScene" uid="uid://bw0h3mk6so7q5" path="res://scenes/component/hurtbox/hurtbox_component.tscn" id="13_2m1s5"]
+[ext_resource type="PackedScene" uid="uid://bw0h3mk6so7q5" path="res://scenes/component/hittbox/hitbox_component.tscn" id="13_2m1s5"]
 [ext_resource type="PackedScene" uid="uid://dmgo31hy4ugfj" path="res://scenes/component/entity_sprite/entity_sprite_component.tscn" id="14_53nx2"]
 
 [sub_resource type="Animation" id="Animation_1vxik"]

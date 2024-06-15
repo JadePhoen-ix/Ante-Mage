@@ -5,7 +5,7 @@ class_name ProjectileCastComponent
 signal collision_detected(collider: Object)
 
 @export var body: CharacterBody2D
-@export var projectile_hitbox_shape: CollisionShape2D
+@export var projectile_hurtbox_shape: CollisionShape2D
 @export_flags_2d_physics var cast_mask
 
 var direction: Vector2
@@ -14,7 +14,7 @@ var direction: Vector2
 
 
 func _ready() -> void:
-	shape_cast.shape = projectile_hitbox_shape.shape.duplicate()
+	shape_cast.shape = projectile_hurtbox_shape.shape.duplicate()
 	shape_cast.collision_mask = cast_mask
 
 

@@ -2,9 +2,72 @@
 
 [ext_resource type="Script" path="res://scenes/spells/flare_spell/flare_spell_projectile.gd" id="1_22auo"]
 [ext_resource type="PackedScene" uid="uid://brcj27mh1o8ey" path="res://scenes/component/velocity/velocity_component.tscn" id="2_pt5x2"]
-[ext_resource type="PackedScene" uid="uid://4shmeggo73at" path="res://scenes/component/hitbox/hitbox_component.tscn" id="3_rjse4"]
+[ext_resource type="PackedScene" uid="uid://4shmeggo73at" path="res://scenes/component/hurtbox/hurtbox_component.tscn" id="3_rjse4"]
 [ext_resource type="Texture2D" uid="uid://dxsc1t87knfet" path="res://scenes/spells/flare_spell/flare_spritesheet.png" id="4_eh11i"]
 [ext_resource type="PackedScene" uid="uid://dxx8rmvqp8o1b" path="res://scenes/component/projectile_cast/projectile_cast_component.tscn" id="4_wyame"]
+
+[sub_resource type="Animation" id="Animation_fux6u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtboxComponent/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VelocityComponent:max_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [600.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/AnimatedSprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals/AnimatedSprite2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_yvakd"]
 resource_name = "default"
@@ -43,7 +106,7 @@ step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
+tracks/0/path = NodePath("HurtboxComponent/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -127,69 +190,6 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_fux6u"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VelocityComponent:max_speed")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [600.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/AnimatedSprite2D:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"default"]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Visuals/AnimatedSprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Visuals/AnimatedSprite2D:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hnm13"]
@@ -293,9 +293,9 @@ autoplay = "default"
 max_speed = 600.0
 acceleration = 200.0
 
-[node name="ProjectileCastComponent" parent="." node_paths=PackedStringArray("body", "projectile_hitbox_shape") instance=ExtResource("4_wyame")]
+[node name="ProjectileCastComponent" parent="." node_paths=PackedStringArray("body", "projectile_hurtbox_shape") instance=ExtResource("4_wyame")]
 body = NodePath("..")
-projectile_hitbox_shape = NodePath("../HitboxComponent/CollisionShape2D")
+projectile_hurtbox_shape = NodePath("../HurtboxComponent/CollisionShape2D")
 cast_mask = 33
 
 [node name="Visuals" type="Node2D" parent="."]
@@ -311,11 +311,11 @@ lifetime = 0.2
 one_shot = true
 explosiveness = 1.0
 
-[node name="HitboxComponent" parent="." instance=ExtResource("3_rjse4")]
+[node name="HurtboxComponent" parent="." instance=ExtResource("3_rjse4")]
 position = Vector2(11, 0)
 damage = 10.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("CircleShape2D_km1jx")
 disabled = true
 

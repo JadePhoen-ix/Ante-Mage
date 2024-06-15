@@ -6,7 +6,7 @@ const MAX_RADIUS := 100.0
 
 var base_rotation := Vector2.RIGHT
 
-@onready var hitbox_component := $HitboxComponent as HitboxComponent
+@onready var hitbox_component := $HurtboxComponent as HurtboxComponent
 
 
 func _ready() -> void:

@@ -8,7 +8,7 @@ var target_position := Vector2.ZERO
 var direction: Vector2
 
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
-@onready var tick_hitbox_component := $TickHitboxComponent as TickHitboxComponent
+@onready var tick_hurtbox_component := $TickHurtboxComponent as TickHurtboxComponent
 @onready var velocity_component := $VelocityComponent as VelocityComponent
 
 
@@ -27,7 +27,7 @@ func _ready() -> void:
 	target_position = SpellTargeting.densest_point(params, true)
 	PhysicsServer2D.free_rid(hit_box_shape)
 	
-	tick_hitbox_component.duration_timeout.connect(_on_duration_timeout)
+	tick_hurtbox_component.duration_timeout.connect(_on_duration_timeout)
 	
 	if target_position == player.global_position:
 		direction = Vector2.RIGHT.rotated(randf_range(0.0, TAU))
@@ -39,8 +39,8 @@ func _physics_process(delta: float) -> void:
 	velocity_component.accelerate_in_direction(direction)
 	velocity_component.move(self)
 	
-	for i in tick_hitbox_component.enemies_in_hitbox.size():
-		var enemy := tick_hitbox_component.enemies_in_hitbox[i].owner as Enemy
+	for i in tick_hurtbox_component.enemies_in_hurtbox.size():
+		var enemy := tick_hurtbox_component.enemies_in_hurtbox[i].owner as Enemy
 		var enemy_velocity_component := enemy.velocity_component
 		var pull_direction := (global_position - enemy.global_position).normalized()
 		

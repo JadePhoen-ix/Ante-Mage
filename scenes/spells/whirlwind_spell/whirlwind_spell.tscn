@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/spells/whirlwind_spell/whirlwind_spell.gd" id="1_6c6b3"]
 [ext_resource type="PackedScene" uid="uid://bogprwkvw2lg2" path="res://scenes/component/random_audio_2d/random_audio_component_2d.tscn" id="2_juf0o"]
 [ext_resource type="Texture2D" uid="uid://vlp0g8sow8mh" path="res://scenes/spells/whirlwind_spell/whirlwind_static.png" id="3_jpww8"]
-[ext_resource type="PackedScene" uid="uid://4shmeggo73at" path="res://scenes/component/hitbox/hitbox_component.tscn" id="5_tdsy4"]
+[ext_resource type="PackedScene" uid="uid://4shmeggo73at" path="res://scenes/component/hurtbox/hurtbox_component.tscn" id="5_tdsy4"]
 
 [sub_resource type="Animation" id="Animation_1ft2u"]
 resource_name = "default"

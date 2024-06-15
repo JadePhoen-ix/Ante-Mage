@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://mpaeohxfs8ok" path="res://scenes/spells/fireball_spell/fireball_spritesheet.png" id="3_dfevb"]
 [ext_resource type="Material" uid="uid://jhs0qa0aey7i" path="res://resources/materials/impact_frame.tres" id="4_dal77"]
 [ext_resource type="PackedScene" uid="uid://b4mv5ubqhhbpd" path="res://scenes/component/shockwave/shockwave_component.tscn" id="5_20vbs"]
-[ext_resource type="PackedScene" uid="uid://4shmeggo73at" path="res://scenes/component/hitbox/hitbox_component.tscn" id="5_q1qje"]
+[ext_resource type="PackedScene" uid="uid://4shmeggo73at" path="res://scenes/component/hurtbox/hurtbox_component.tscn" id="5_q1qje"]
 
 [sub_resource type="Animation" id="Animation_xvxg7"]
 length = 0.001

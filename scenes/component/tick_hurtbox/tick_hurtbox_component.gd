@@ -1,5 +1,5 @@
-extends HitboxComponent
-class_name TickHitboxComponent
+extends HurtboxComponent
+class_name TickHurtboxComponent
 
 
 signal duration_timeout()
@@ -7,7 +7,7 @@ signal duration_timeout()
 @export_range(0.5, 60.0, 0.1) var duration := 5.0
 @export_range(0.5, 10.0, 0.1) var damage_interval := 1.0
 
-var enemies_in_hitbox: Array[HurtboxComponent] = []
+var enemies_in_hurtbox: Array[HitboxComponent] = []
 
 @onready var interval_timer := $IntervalTimer as Timer
 
@@ -25,13 +25,13 @@ func _ready() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is HurtboxComponent:
-		enemies_in_hitbox.append(area)
+	if area is HitboxComponent:
+		enemies_in_hurtbox.append(area)
 
 
 func _on_area_exited(area: Area2D) -> void:
-	if area is HurtboxComponent:
-		enemies_in_hitbox.erase(area)
+	if area is HitboxComponent:
+		enemies_in_hurtbox.erase(area)
 
 
 func _on_duration_timeout() -> void:
@@ -40,8 +40,8 @@ func _on_duration_timeout() -> void:
 
 
 func _on_interval_timeout() -> void:
-	for i in enemies_in_hitbox.size():
-		var enemy_hurtbox := enemies_in_hitbox[i]
+	for i in enemies_in_hurtbox.size():
+		var enemy_hurtbox := enemies_in_hurtbox[i]
 		enemy_hurtbox.trigger_hit(damage)
 
 

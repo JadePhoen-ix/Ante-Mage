@@ -13,7 +13,7 @@ var has_hit := false
 @onready var velocity_component := $VelocityComponent as VelocityComponent
 @onready var visuals := $Visuals as Node2D
 @onready var projectile_cast_component := $ProjectileCastComponent as ProjectileCastComponent
-@onready var hitbox_component := $HitboxComponent as HitboxComponent 
+@onready var hitbox_component := $HurtboxComponent as HurtboxComponent 
 @onready var hit_particles := $Visuals/GPUParticles2D as GPUParticles2D
 
 

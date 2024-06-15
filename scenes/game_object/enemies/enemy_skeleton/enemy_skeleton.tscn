@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://b3rj1d804f0fw" path="res://assets/audio/impact/footstep_carpet_002.ogg" id="9_t3bqc"]
 [ext_resource type="AudioStream" uid="uid://bd24ufnwmrbpe" path="res://assets/audio/impact/footstep_carpet_003.ogg" id="10_124ej"]
 [ext_resource type="AudioStream" uid="uid://ceulh1vjbjg6p" path="res://assets/audio/impact/footstep_carpet_004.ogg" id="11_dv6eb"]
-[ext_resource type="PackedScene" uid="uid://bw0h3mk6so7q5" path="res://scenes/component/hurtbox/hurtbox_component.tscn" id="12_3xrcs"]
+[ext_resource type="PackedScene" uid="uid://bw0h3mk6so7q5" path="res://scenes/component/hittbox/hitbox_component.tscn" id="13_hhvnd"]
 [ext_resource type="PackedScene" uid="uid://cdjt2bwi3w0j3" path="res://scenes/component/animated_entity/animated_entity_component.tscn" id="13_w6qv2"]
 [ext_resource type="Shader" path="res://resources/shaders/hit_flash_component.gdshader" id="14_ax0pw"]
 [ext_resource type="Texture2D" uid="uid://dw0x84piryp2a" path="res://scenes/game_object/enemies/enemy_skeleton/skeleton_spritesheet.png" id="16_8gq5i"]
@@ -203,10 +203,10 @@ texture_frames = Vector2(2, 3)
 unique_name_in_owner = true
 streams = Array[AudioStream]([ExtResource("7_ax0ek"), ExtResource("8_1222c"), ExtResource("9_t3bqc"), ExtResource("10_124ej"), ExtResource("11_dv6eb")])
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("12_3xrcs")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("13_hhvnd")]
 health_component = NodePath("../HealthComponent")
 
-[node name="HurtboxCollisionShape" type="CollisionShape2D" parent="HurtboxComponent"]
+[node name="HitboxCollisionShape" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(-2, -13.5)
 shape = SubResource("RectangleShape2D_5b5us")
 

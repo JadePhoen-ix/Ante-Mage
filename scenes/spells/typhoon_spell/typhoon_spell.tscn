@@ -3,72 +3,7 @@
 [ext_resource type="Script" path="res://scenes/spells/typhoon_spell/typhoon_spell.gd" id="1_fvyv4"]
 [ext_resource type="PackedScene" uid="uid://brcj27mh1o8ey" path="res://scenes/component/velocity/velocity_component.tscn" id="2_fca2r"]
 [ext_resource type="Texture2D" uid="uid://covpt87ckfbi7" path="res://scenes/spells/typhoon_spell/typhoon_static_v2.png" id="2_huml2"]
-[ext_resource type="PackedScene" uid="uid://ckhd8px004bft" path="res://scenes/component/tick_hitbox/tick_hitbox_component.tscn" id="3_mjilm"]
-
-[sub_resource type="Animation" id="Animation_y4v12"]
-resource_name = "in"
-length = 0.4
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(2, 1),
-"update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(1.5, 1.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/SpinGPUParticles2D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/PullGPUParticles2D:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Visuals:modulate")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(2.2974, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("TickHitboxComponent:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
-}
+[ext_resource type="PackedScene" uid="uid://ckhd8px004bft" path="res://scenes/component/tick_hurtbox/tick_hurtbox_component.tscn" id="3_lkw7c"]
 
 [sub_resource type="Animation" id="Animation_p03ih"]
 length = 0.001
@@ -135,7 +70,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("TickHitboxComponent/CollisionShape2D:disabled")
+tracks/5/path = NodePath("TickHurtboxComponent/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -147,7 +82,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("TickHitboxComponent:scale")
+tracks/6/path = NodePath("TickHurtboxComponent:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -155,6 +90,71 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y4v12"]
+resource_name = "in"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1.5, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/SpinGPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/PullGPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals:modulate")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2.2974, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TickHurtboxComponent:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_4xujt"]
@@ -211,7 +211,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("TickHitboxComponent/CollisionShape2D:disabled")
+tracks/4/path = NodePath("TickHurtboxComponent/CollisionShape2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -317,14 +317,13 @@ acceleration = 10.0
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_sy860")
 
-[node name="TickHitboxComponent" parent="." instance=ExtResource("3_mjilm")]
+[node name="TickHurtboxComponent" parent="." instance=ExtResource("3_lkw7c")]
 position = Vector2(0, -10)
 collision_layer = 0
 duration = 10.0
-damage_interval = 10.0
 damage = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TickHitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TickHurtboxComponent"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_newy4")
 
